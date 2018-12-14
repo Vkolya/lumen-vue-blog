@@ -9,7 +9,7 @@ export class HttpService {
             'Content-Type': 'application/json'
         }
         this.axios = axios.create({
-            baseURL: 'http://lumen/api/v1/'
+            baseURL: 'http://localhost:9000/api/v1/'
         });
 
         this.axios.interceptors.request.use(
