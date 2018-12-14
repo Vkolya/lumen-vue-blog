@@ -34,3 +34,6 @@ cd app
 npm install
 npm run serve
 ```
+### Credentials for login
+Login: vkolia@mail.ua
+Password: 111111
