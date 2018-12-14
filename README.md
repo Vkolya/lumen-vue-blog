@@ -1,7 +1,5 @@
 # lumen-vue-blog
 
-Simple blog written in lumen and vue.js . Authentication based on JSON Web Token
-
 Technologies used:
 ### FRONTEND
   - [Vue.js 2](https://vuejs.org/)
