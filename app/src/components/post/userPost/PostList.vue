@@ -24,7 +24,7 @@
                                 </p>
                                 <p>
                                     <button type="button" class="btn btn-primary">
-                                        <router-link :to="{ name: 'EditPost', params: { id: post.id }}">Update
+                                        <router-link :to="{ name: 'EditPost', params: { id: post.id }}">Edit
                                         </router-link>
                                     </button>
                                 </p>
