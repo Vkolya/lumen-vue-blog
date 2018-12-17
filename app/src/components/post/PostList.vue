@@ -11,7 +11,7 @@
                             <strong>{{ post.author_name }}</strong> <span class="text-muted"><i class="fa fa-clock-o"></i> {{ post.created_at }}</span>
                         </div>
                         <h3><router-link :to="{ name: 'SinglePost', params: { id: post.id }}">{{ post.title }}</router-link></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
+                        <p class="post-text">{{ post.text }}</p>
                     </div>
                 </div>
             </div>
@@ -107,12 +107,19 @@
 
     .card-desc p {
         color: #747373;
+        text-align: left;
         font-size: 12px;
         font-weight: 400;
         line-height: 1.3;
         margin: 0px;
         padding: 0;
         font-family: 'Raleway', sans-serif;
+    }
+    .post-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
     }
 
 

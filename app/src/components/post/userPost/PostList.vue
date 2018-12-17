@@ -17,11 +17,7 @@
                             </div>
                             <div class="col-md-9">
                                 <h5>{{ post.title }}</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, id nec conceptam conclusionemque. Et eam tation option.
-                                    Utinam salutatus ex eum. Ne mea dicit tibique facilisi, ea mei omittam explicari
-                                    conclusionemque, ad nobis propriae quaerendum sea.
-                                </p>
+                                <p class="post-text">{{ post.text }}</p>
                                 <p>
                                     <button type="button" class="btn btn-primary">
                                         <router-link :to="{ name: 'EditPost', params: { id: post.id }}">Edit
@@ -42,7 +38,6 @@
 
 <script>
     import {mapState} from 'vuex';
-    import pagination from 'laravel-vue-pagination';
 
     export default {
         name: 'UserPostList',
@@ -83,6 +78,13 @@
         border-bottom: 1px solid #DDD;
         padding: 5px 0px 5px 15px;
         font-size: 12px;
+    }
+    .post-text {
+        text-align: left;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
     }
 
 
