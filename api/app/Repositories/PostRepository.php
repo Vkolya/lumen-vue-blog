@@ -28,4 +28,8 @@ class PostRepository implements PostRepositoryContract
         $post->save();
         return $post;
     }
+    public function deleteById(int $id): void
+    {
+        Post::destroy($id);
+    }
 }

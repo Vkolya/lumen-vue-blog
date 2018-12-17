@@ -35,6 +35,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
         $router->get('/', 'PostController@index');
         $router->get('/{id}', 'PostController@show');
         $router->put('/{id}', 'PostController@update');
+        $router->delete('/{id}', 'PostController@delete');
 
         $router->get('/{id}/comments', 'CommentController@index');
         $router->post('/{id}/comments', 'CommentController@store');

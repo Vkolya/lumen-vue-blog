@@ -49,8 +49,13 @@ class PostController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $post = Post::find($id);
+        if (Auth::user()->can('delete', $post)) {
+            $this->postRepository->deleteById($id);
+        }else {
+            return response()->json(['error' => 'You are not allowed to delete this post.'],403);
+        }
     }
 }

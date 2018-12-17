@@ -10,4 +10,5 @@ interface PostRepository
     public function getByUserId(int $userId);
     public function getPost(int $id);
     public function save(Post $post);
+    public function deleteById(int $id);
 }

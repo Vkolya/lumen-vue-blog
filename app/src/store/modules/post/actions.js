@@ -2,11 +2,11 @@ import httpService from '../../../services/common/httpService';
 
 export default {
 
-    getPosts: (context,page) => {
+    getPosts: (context, page) => {
 
         return new Promise((resolve, reject) => {
 
-            httpService.get('posts?page='+page)
+            httpService.get('posts?page=' + page)
                 .then(function (res) {
                     context.commit('SET_POSTS', res.data);
                     resolve(res);
@@ -30,11 +30,11 @@ export default {
             });
         });
     },
-    updatePost: (context,post) => {
+    updatePost: (context, post) => {
 
         return new Promise((resolve, reject) => {
 
-            httpService.put('posts/'+post.id,{
+            httpService.put('posts/' + post.id, {
                 title: post.title,
                 text: post.text,
             })
@@ -48,14 +48,29 @@ export default {
             });
         });
     },
-    getPost: (context,post_id) => {
+    getPost: (context, post_id) => {
 
         return new Promise((resolve, reject) => {
 
-            httpService.get('posts/'+post_id)
+            httpService.get('posts/' + post_id)
                 .then(function (res) {
 
                     context.commit('SET_POST', res.data.data);
+                    resolve(res);
+
+                }).catch(function (err) {
+                reject(err);
+            });
+        });
+    },
+    deletePost: (context, post_id) => {
+
+        return new Promise((resolve, reject) => {
+
+            httpService.delete('posts/' + post_id)
+                .then(function (res) {
+
+                    context.commit('DELETE_POST', post_id);
                     resolve(res);
 
                 }).catch(function (err) {

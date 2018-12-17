@@ -18,12 +18,15 @@
                             <div class="col-md-9">
                                 <h5>{{ post.title }}</h5>
                                 <p class="post-text">{{ post.text }}</p>
-                                <p>
+                                <div class="btns-block">
                                     <button type="button" class="btn btn-primary">
                                         <router-link :to="{ name: 'EditPost', params: { id: post.id }}">Edit
                                         </router-link>
                                     </button>
-                                </p>
+                                    <button type="button" class="btn btn-danger" @click="onDelete(post.id)">
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,14 +40,21 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+    import {mapActions,mapState} from 'vuex';
 
     export default {
         name: 'UserPostList',
         computed: {
-            ...mapState('post', ['userPosts']),
+            ...mapState('post', ['userPosts'])
         },
-
+        methods: {
+            ...mapActions({
+                deletePost: 'post/deletePost',
+            }),
+            onDelete(post_id) {
+                this.deletePost(post_id);
+            },
+        },
         created: function () {
             this.$store.dispatch('post/getPostsByUser');
         },
@@ -61,9 +71,15 @@
 
     .post-content .btn {
         width: 150px;
+        cursor: pointer;
+        margin: 5px;
     }
     .post-content .btn a{
         color: white;
+    }
+    .btns-block {
+        float: right;
+        margin-bottom: 15px;
     }
 
     .user-posts {
