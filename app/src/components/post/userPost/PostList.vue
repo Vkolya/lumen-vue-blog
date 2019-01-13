@@ -1,10 +1,10 @@
 <template>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 user-posts">
-                <div class="row" v-for="post in userPosts.data" :key="post.id">
-                    <div class="col-md-12 post">
+
+            <div class="col-md-12 user-posts ">
+                <div v-for="post in userPosts.data" :key="post.id">
+
 
                         <div class="row">
                             <div class="col-md-12 post-header-line text-left">
@@ -29,11 +29,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                 </div>
 
-
-            </div>
         </div>
 
     </div>
@@ -76,6 +74,10 @@
     }
     .post-content .btn a{
         color: white;
+    }
+    .post-content img {
+        margin: 50px 0 20px 0;
+        width: 100%;
     }
     .btns-block {
         float: right;
