@@ -13,6 +13,10 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link :to="{ name: 'AddPost' }" class="nav-link" v-if="isUserLoggedIn">Add post
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link :to="{ name: 'LoginPage' }" class="nav-link" v-if="!isUserLoggedIn">Login
                         </router-link>
                         <a class="nav-link logout-btn" v-if="isUserLoggedIn" @click="onLogOut">Log out</a>

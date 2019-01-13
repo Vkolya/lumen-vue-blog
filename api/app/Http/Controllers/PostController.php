@@ -29,7 +29,16 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-
+        $post = $this->postRepository->save(
+            new Post(
+                [
+                    'user_id' => $request->input('user_id'),
+                    'title' => $request->input('title'),
+                    'text' => $request->input('text')
+                ]
+            )
+        );
+        return new PostResource($post);
     }
 
     public function show($id)

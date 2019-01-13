@@ -2,35 +2,36 @@
 
     <div class="container">
 
-            <div class="col-md-12 user-posts ">
-                <div v-for="post in userPosts.data" :key="post.id">
+        <div class="col-md-12 user-posts ">
+            <div v-for="post in userPosts.data" :key="post.id">
 
 
-                        <div class="row">
-                            <div class="col-md-12 post-header-line text-left">
-                                {{ post.created_at }}
-                            </div>
-                        </div>
-                        <div class="row post-content">
-                            <div class="col-md-3">
-                                <img :src="post.image" width="200px">
-                            </div>
-                            <div class="col-md-9">
-                                <h5>{{ post.title }}</h5>
-                                <p class="post-text">{{ post.text }}</p>
-                                <div class="btns-block">
-                                    <button type="button" class="btn btn-primary">
-                                        <router-link :to="{ name: 'EditPost', params: { id: post.id }}">Edit
-                                        </router-link>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" @click="onDelete(post.id)">
-                                        Delete
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
+                <div class="row">
+                    <div class="col-md-12 post-header-line text-left">
+                        {{ post.created_at }}
+                    </div>
                 </div>
+                <div class="row post-content">
+                    <div class="col-md-3">
+                        <img :src="post.image ? post.image : no_image" width="200px">
+
+                    </div>
+                    <div class="col-md-9">
+                        <h5>{{ post.title }}</h5>
+                        <p class="post-text">{{ post.text }}</p>
+                        <div class="btns-block">
+                            <button type="button" class="btn btn-primary">
+                                <router-link :to="{ name: 'EditPost', params: { id: post.id }}">Edit
+                                </router-link>
+                            </button>
+                            <button type="button" class="btn btn-danger" @click="onDelete(post.id)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
@@ -38,10 +39,16 @@
 </template>
 
 <script>
-    import {mapActions,mapState} from 'vuex';
+    import {mapActions, mapState} from 'vuex';
 
     export default {
         name: 'UserPostList',
+
+        data() {
+            return {
+                no_image: require('../../../assets/no_image.jpg')
+            }
+        },
         computed: {
             ...mapState('post', ['userPosts'])
         },
@@ -72,13 +79,16 @@
         cursor: pointer;
         margin: 5px;
     }
-    .post-content .btn a{
+
+    .post-content .btn a {
         color: white;
     }
+
     .post-content img {
         margin: 50px 0 20px 0;
         width: 100%;
     }
+
     .btns-block {
         float: right;
         margin-bottom: 15px;
@@ -97,6 +107,7 @@
         padding: 5px 0px 5px 15px;
         font-size: 12px;
     }
+
     .post-text {
         text-align: left;
         overflow: hidden;

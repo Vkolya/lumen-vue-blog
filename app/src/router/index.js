@@ -6,6 +6,7 @@ import PostsList from '../pages/PostsList.vue'
 import UserPostsList from '../pages/UserPostsList.vue'
 import SinglePost from '../pages/SinglePost.vue'
 import EditPost from '../pages/EditPost.vue'
+import AddPost from '../pages/AddPost.vue'
 import LoginPage from '../pages/LoginPage.vue'
 
 Vue.use(Router)
@@ -17,6 +18,7 @@ const middleware = handler => (
 export default new Router({
     mode: 'history',
     base: '/',
+    scrollBehavior: () => ({y: 0}),
     routes: [
         ...middleware(middlewares.auth(store))([
             {
@@ -33,6 +35,11 @@ export default new Router({
                 path: '/posts/my',
                 name: 'UserPostsList',
                 component: UserPostsList
+            },
+            {
+                path: '/posts/add',
+                name: 'AddPost',
+                component: AddPost
             },
             {
                 path: '/posts/:id',

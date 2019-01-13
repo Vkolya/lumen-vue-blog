@@ -30,6 +30,24 @@ export default {
             });
         });
     },
+    addPost: (context, post) => {
+
+        return new Promise((resolve, reject) => {
+
+            httpService.post('posts', {
+                user_id: post.user_id,
+                title: post.title,
+                text: post.text,
+            })
+                .then(function (res) {
+
+                    resolve(res);
+
+                }).catch((error) => {
+                reject(error.response.data);
+            });
+        });
+    },
     updatePost: (context, post) => {
 
         return new Promise((resolve, reject) => {
