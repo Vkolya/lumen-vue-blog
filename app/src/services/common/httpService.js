@@ -9,7 +9,7 @@ export class HttpService {
             'Content-Type': 'application/json'
         }
         this.axios = axios.create({
-            baseURL: 'http://localhost:9000/api/v1/'
+            baseURL: 'http://localhost:9001/api/v1/'
         });
 
         this.axios.interceptors.request.use(
@@ -42,7 +42,6 @@ export class HttpService {
     delete(url, params) {
         return this.axios.delete(url, params);
     }
-
 }
 
 export default new HttpService();
